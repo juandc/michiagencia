@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Michiagencia</title>
+</head>
+<body>
+  <h1>Michiagencia</h1>
+
+  <section>
+    <h2>Michidirectores</h2>
+
+    <ul id="directorsList">
+    </ul>
+  </section>
+
+  <section>
+    <h2>Michiagentes</h2>
+
+    <ul id="agentsList">
+    </ul>
+  </section>
+
+
+  <script>
+
+    async function loadDirectorsData() {
+      const directorsList = document.getElementById('directorsList');
+
+      const res = await fetch('http://localhost:8080/api/directors')
+      const { directors } = await res.json();
+      
+      directors.map(michiDirector => {
+        console.log(michiDirector)
+
+        const li = document.createElement('li');
+        const text = document.createTextNode(michiDirector.name);
+
+        li.appendChild(text);
+        directorsList.appendChild(li);
+      });
+    }
+
+    async function loadAgentsData() {
+      const agentsList = document.getElementById('agentsList');
+
+      const res = await fetch('http://localhost:8080/api/agents')
+      const { agents } = await res.json();
+      
+      agents.map(michiAgent => {
+        console.log(michiAgent)
+
+        const li = document.createElement('li');
+        const text = document.createTextNode(michiAgent.name);
+
+        li.appendChild(text);
+        agentsList.appendChild(li);
+      });
+    }
+
+    loadDirectorsData();
+    loadAgentsData();
+  </script>
+</body>
+</html>

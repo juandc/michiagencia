@@ -10,6 +10,10 @@ const directors = [
     id: 002,
     name: 'MichiAlicia',
   },
+  {
+    id: 003,
+    name: 'MichiRogoberto',
+  },
 ];
 
 directorsRouter.get('/api/directors', (req, res) => {
