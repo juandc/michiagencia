@@ -1,5 +1,6 @@
 const express = require('express');
 const directorsRouter = express.Router();
+const newId = require('../utils/idMaker');
 
 const directors = [
   {
@@ -34,6 +35,22 @@ directorsRouter.get('/api/directors/:id', (req, res) => {
       message: "Lo sentimos, no existe ninguna michi directora con el id " + id,
     });
   }
+});
+
+directorsRouter.post('/api/directors', (req, res) => {
+  console.log(req.body);
+
+  const { name } = req.body;
+  let id = newId();
+
+  const newDirector = { id, name };
+
+  directors.push(newDirector);
+
+  res.json({
+    status: 200,
+    director: newDirector,
+  });
 });
 
 module.exports = directorsRouter;

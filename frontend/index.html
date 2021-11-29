@@ -15,6 +15,12 @@
 
     <ul id="directorsList">
     </ul>
+
+    <form>
+      <label for="newDirectorName">Escribe el nombre de la nueva directora:</label>
+      <input id="newDirectorName" name="newDirectorName" type="text" placeholder="Vladimira Michusqui" />
+      <button id="newDirectorBtn" type="button">Crear nueva directora</button>
+    </form>
   </section>
 
   <section>
@@ -22,47 +28,15 @@
 
     <ul id="agentsList">
     </ul>
+
+    <form>
+      <label for="newAgentName">Escribe el nombre de la nueva directora:</label>
+      <input id="newAgentName" name="newAgentName" type="text" placeholder="Vladimira Michusqui" />
+      <button id="newAgentBtn" type="button">Crear nueva directora</button>
+    </form>
   </section>
 
 
-  <script>
-
-    async function loadDirectorsData() {
-      const directorsList = document.getElementById('directorsList');
-
-      const res = await fetch('http://localhost:8080/api/directors')
-      const { directors } = await res.json();
-      
-      directors.map(michiDirector => {
-        console.log(michiDirector)
-
-        const li = document.createElement('li');
-        const text = document.createTextNode(michiDirector.name);
-
-        li.appendChild(text);
-        directorsList.appendChild(li);
-      });
-    }
-
-    async function loadAgentsData() {
-      const agentsList = document.getElementById('agentsList');
-
-      const res = await fetch('http://localhost:8080/api/agents')
-      const { agents } = await res.json();
-      
-      agents.map(michiAgent => {
-        console.log(michiAgent)
-
-        const li = document.createElement('li');
-        const text = document.createTextNode(michiAgent.name);
-
-        li.appendChild(text);
-        agentsList.appendChild(li);
-      });
-    }
-
-    loadDirectorsData();
-    loadAgentsData();
-  </script>
+  <script src="./script.js"></script>
 </body>
 </html>

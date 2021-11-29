@@ -1,5 +1,6 @@
 const express = require('express');
 const agentsRouter = express.Router();
+const newId = require('../utils/idMaker');
 
 const agents = [
   {
@@ -26,6 +27,22 @@ agentsRouter.get('/api/agents/:id', (req, res) => {
       message: "Lo sentimos, no existe ninguna michi agente con el id " + id,
     });
   }
+});
+
+agentsRouter.post('/api/agents', (req, res) => {
+  console.log(req.body);
+
+  const { name } = req.body;
+  let id = newId();
+
+  const newAgent = { id, name };
+
+  directors.push(newAgent);
+
+  res.json({
+    status: 200,
+    agent: newAgent,
+  });
 });
 
 module.exports = agentsRouter;
