@@ -1,7 +1,7 @@
 async function loadDirectorsData() {
   const directorsList = document.getElementById('directorsList');
 
-  const res = await fetch('http://localhost:8080/api/directors')
+  const res = await fetch('./api/directors')
   const { directors } = await res.json();
   
   directors.map(michiDirector => {
@@ -18,7 +18,7 @@ async function loadDirectorsData() {
 async function loadAgentsData() {
   const agentsList = document.getElementById('agentsList');
 
-  const res = await fetch('http://localhost:8080/api/agents')
+  const res = await fetch('./api/agents')
   const { agents } = await res.json();
   
   agents.map(michiAgent => {
@@ -36,7 +36,7 @@ async function createNewDirector() {
   const directorName = document.getElementById('newDirectorName');
   const name = directorName.value;
 
-  const res = await fetch('http://localhost:8080/api/directors', {
+  const res = await fetch('./api/directors', {
     headers: {
       'Content-Type': 'application/json', // -- content type
     },
@@ -59,7 +59,7 @@ async function createNewAgent() {
   const agentName = document.getElementById('newAgentName');
   const name = agentName.value;
 
-  const res = await fetch('http://localhost:8080/api/directors', {
+  const res = await fetch('./api/directors', {
     headers: {
       'Content-Type': 'application/json', // -- content type
     },
